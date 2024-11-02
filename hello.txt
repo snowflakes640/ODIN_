@@ -1,0 +1,3 @@
+hello
+// number = Number(prompt("enter a number")); This is cool
+<!-- html skeleton: "!" + "tab"  -->
