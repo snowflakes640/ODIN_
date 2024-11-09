@@ -1,25 +1,62 @@
 let humanTotal = 0,
-      computerTotal = 0
+    computerTotal = 0
+
+const buttons = document.querySelectorAll("button")
+const header = document.getElementById("header")
+
 
 function getComputerChoice(){
     const minCeiled = Math.ceil(1);
     const maxFloored = Math.floor(4);
     let result = Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
     if (result === 1){
+        alert("Computer choose ROCK")
         return "rock"
     } else if (result === 2){
+        alert("Computer choose PAPER")
         return "paper"
     } else if(result === 3){
+        alert("Computer choose SCISSORS")
         return "scissors"
     }
 
 }
 
-function getHumanChoice(){
-    game_pick = prompt("Pick your choice")
-        return game_pick.toLowerCase()
+// function getHumanChoice(){
+//     buttons.forEach((button) => {
+//         button.addEventListener("click", () => {
+//             console.log(button.id)
+//             return button.id
+//         })
+//     })
 
-}
+// }
+
+// function getHumanChoice(){
+//     game_pick = prompt("Pick your choice")
+//         return game_pick.toLowerCase()
+
+// }
+    let compScore = document.createElement("p")
+    let playerScore = document.createElement("p")
+
+    
+    
+
+document.addEventListener("DOMContentLoaded", () =>{
+    header.appendChild(compScore)
+    header.appendChild(playerScore)
+
+    buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+            let getHumanChoice = button.id
+            console.log(getHumanChoice)
+            playRound(getHumanChoice, getComputerChoice())
+        })
+    })
+})
+
+
 
 
 function countScore(humanScore, computerScore){
@@ -31,6 +68,8 @@ function countScore(humanScore, computerScore){
 }
 
 function playRound(humanChoice, computerChoice){
+    
+    
     console.log("The computer played: " + computerChoice)
     let humanScore = 0,
         computerScore = 0
@@ -64,16 +103,36 @@ function playRound(humanChoice, computerChoice){
     });
 
     score = countScore(humanScore, computerScore)
-    console.log("So far the computer has scored: " + score.computerTotal)
-    console.log("And you have earned: " + score.humanTotal)
 
+    compScore.textContent = `The computer has scored:  ${score.computerTotal}`
+    playerScore.textContent = `You have earned:  ${score.humanTotal}`
+
+    if(score.humanTotal >=3 || score.computerTotal >=3){
+        const winner = document.createElement("div")
+
+        buttons.forEach((button) => {
+            button.setAttribute("disabled", true)
+            })
+        
+        if(score.humanTotal===3){
+            winner.textContent = "congratulations!!! The win is yours"
+         } else {
+            winner.textContent = "uhoh!!! It's the computer this time"        
+         }
+         document.body.appendChild(winner)
+    }
 }
+    
+    // console.log("So far the computer has scored: " + score.computerTotal)
+    // console.log("And you have earned: " + score.humanTotal)
+
+
 
 
 function playGame(){
-    for (let i=1; i<=5; i++){
-        console.log("Let's start! Round: " + i)
-        playRound(getHumanChoice(), getComputerChoice()   )     
+    // for (let i=1; i<=5; i++){}
+        // console.log("Let's start! Round: " + i)
+        playRound(getHumanChoice, getComputerChoice())     
         }
 
         console.log("Computer final score:" + computerTotal)
@@ -87,6 +146,6 @@ function playGame(){
             console.log("GG to both. It's a draw")
         }
 
-}
 
-playGame()
+
+//playGame()
