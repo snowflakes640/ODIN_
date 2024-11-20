@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Assign1.css">
+    <title>Library</title>
+</head>
+<body>
+    <div class="adding-box">
+        <dialog>
+            <form id="bookForm">
+                <label for="title"> Book title: </label>
+                <input type="text" id="title" name="title"> <br>
+                
+                <label for="author"> Author name: </label>
+                <input type="text" id="author" name="author"> <br>
+                
+                <label for="pages"> Page number: </label>
+                <input type="text" id="pages" name="pages"> <br>
+                
+                <input type="radio" id="completed" name="status" value="Completed">
+                <label for="completed"> Completed </label> <br>
+                
+                <input type="radio" id="reading" name="status" value="Reading">
+                <label for="reading"> Reading </label> <br>
+                
+                <input type="radio" id="not_yet" name="status" value="Not Yet">
+                <label for="not_yet"> Not Yet </label> <br>
+                
+                <button type="submit" id="submitBtn"> ADD </button>
+            </form>
+        </dialog>
+        <button id="addBtn"> New Book </button>
+    </div>
+    <div class="container" id="container">
+        
+    </div>
+    <script src="Assign1_library.js"></script>
+</body>
+</html>
